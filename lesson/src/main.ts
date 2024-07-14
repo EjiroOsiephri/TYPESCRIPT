@@ -1,21 +1,10 @@
-const stringArr = ["Hey", "Ejiro", "us", "a ", "boy"];
+type stringOrNumber = string | number;
 
-let numberArr = [1, 2, 3, 4, 5, 6, 7];
+type stringOrNumberArr = (string | number)[];
 
-const stringDataArr: string[] = [];
-const dataArr: any[] = [];
+let obj: object;
 
-stringArr.push("Data");
-
-dataArr.unshift(false);
-
-//tupules
-
-let myTupules: [string, number, boolean] = ["Ejiro", 23, true];
-
-let generalArr: (string | number | boolean)[] = ["Mike", 34, false];
-
-generalArr = myTupules;
+obj = [];
 
 interface Guitarist {
   name?: string;
@@ -23,32 +12,45 @@ interface Guitarist {
   albums: (string | number)[];
 }
 
-let evh: Guitarist = {
-  name: "Mogan",
-  active: true,
-  albums: ["Mike logan", 40],
+const add = (a: number, b: number): number => {
+  return a + b;
 };
 
-let jp: Guitarist = {
-  active: true,
-  albums: ["I", "II", "III"],
+const logMsg = (message: any): void => {
+  console.log(message);
 };
 
-evh = jp;
+logMsg("Hello");
+logMsg(add(3, 7));
 
-const greetGuitarist = (guitarist: Guitarist) => {
-  return `Hello there ${guitarist.name}`;
+type mathFunction = (a: number, b: number) => number;
+
+let multiply: mathFunction = function (c, d) {
+  return c * d;
 };
 
-console.log(greetGuitarist(jp));
+//optional parameters
 
-enum Grade {
-  A,
-  B,
-  C,
-  D,
-  E,
-  F,
-}
+const addAll = (a: number, b: number, c?: number): number => {
+  if (typeof c !== "undefined") {
+    return a + b + c;
+  }
+  return a + b;
+};
 
-console.log(Grade.A);
+const sumAll = (a: number = 10, b: number, c: number = 2): number => {
+  return a + b + c;
+};
+
+console.log(sumAll(undefined, 20));
+console.log(addAll(1, 20));
+
+const total = (...nums: number[]): number => {
+  return nums.reduce((prev, curr) => prev + curr);
+};
+
+logMsg(total(4, 5, 6, 9, 19, 12));
+
+const createError = (message: string) => {
+  throw new Error(message);
+};

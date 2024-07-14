@@ -1,35 +1,33 @@
 "use strict";
-const stringArr = ["Hey", "Ejiro", "us", "a ", "boy"];
-let numberArr = [1, 2, 3, 4, 5, 6, 7];
-const stringDataArr = [];
-const dataArr = [];
-stringArr.push("Data");
-dataArr.unshift(false);
-//tupules
-let myTupules = ["Ejiro", 23, true];
-let generalArr = ["Mike", 34, false];
-generalArr = myTupules;
-let evh = {
-    name: "Mogan",
-    active: true,
-    albums: ["Mike logan", 40],
+let obj;
+obj = [];
+const add = (a, b) => {
+    return a + b;
 };
-let jp = {
-    active: true,
-    albums: ["I", "II", "III"],
+const logMsg = (message) => {
+    console.log(message);
 };
-evh = jp;
-const greetGuitarist = (guitarist) => {
-    return `Hello there ${guitarist.name}`;
+logMsg("Hello");
+logMsg(add(3, 7));
+let multiply = function (c, d) {
+    return c * d;
 };
-console.log(greetGuitarist(jp));
-var Grade;
-(function (Grade) {
-    Grade[Grade["A"] = 0] = "A";
-    Grade[Grade["B"] = 1] = "B";
-    Grade[Grade["C"] = 2] = "C";
-    Grade[Grade["D"] = 3] = "D";
-    Grade[Grade["E"] = 4] = "E";
-    Grade[Grade["F"] = 5] = "F";
-})(Grade || (Grade = {}));
-console.log(Grade.A);
+//optional parameters
+const addAll = (a, b, c) => {
+    if (typeof c !== "undefined") {
+        return a + b + c;
+    }
+    return a + b;
+};
+const sumAll = (a = 10, b, c = 2) => {
+    return a + b + c;
+};
+console.log(sumAll(undefined, 20));
+console.log(addAll(1, 20));
+const total = (...nums) => {
+    return nums.reduce((prev, curr) => prev + curr);
+};
+logMsg(total(4, 5, 6, 9, 19, 12));
+const createError = (message) => {
+    throw new Error(message);
+};
