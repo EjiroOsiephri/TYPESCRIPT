@@ -1,6 +1,11 @@
-let Ejiro = 2;
-console.log(Ejiro);
+let ejiro: string = "Ejiro";
 
-const a: number = 2;
-const b: number = 3;
-const c: string = "4";
+let age: number = 42;
+
+let formId: any = "Ejiro";
+
+let isLoading: boolean = true;
+
+const formFunction = (a: string, b: number) => {
+  return a + b;
+};
