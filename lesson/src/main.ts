@@ -1,48 +1,29 @@
-class Coder {
-  constructor(
-    public readonly name: string,
-    private age: number,
-    protected lang: string = "Typescript"
-  ) {
-    this.name = name;
-    this.age = age;
-    this.lang = lang;
-  }
-  getModel(name: string) {
-    return `This is my name ${name} and my other name ${this.name} i am ${this.age} years old and i learnt a new language named ${this.lang}`;
-  }
+interface TransactionObj {
+  [index: string]: number;
 }
 
-const Ejiro = new Coder("Ejiro", 56);
+let trasactionFunction = (transactions: TransactionObj) => {
+  let total = 0;
+  for (const transaction in transactions) {
+    console.log(transaction);
 
-console.log(Ejiro.getModel("Timi"));
-
-class WebDev extends Coder {
-  public name: string = "Eji";
-
-  constructor(name: string, age: number, lang: string) {
-    super(name, age, lang);
-    this.name = name;
+    total += transactions[transaction];
   }
-}
+  return total;
+};
 
-const sara = new WebDev("Ejiro", 43, "NodeJS");
+console.log(
+  trasactionFunction({
+    name: 23,
+    age: 67,
+  })
+);
+type streams = "job" | "income" | "sidehustle";
 
-console.log(sara);
+type incomes = Record<streams, number | string>;
 
-interface MadInterface {
-  name: string;
-  action(value: string): string;
-}
-
-class coder implements MadInterface {
-  constructor(public name: string) {
-    this.name = name;
-  }
-  action(value: string) {
-    return `This is my life ${value}`;
-  }
-}
-
-const MadInterfaceIdea = new coder("Baddie");
-console.log(MadInterfaceIdea.action("I alone am the king of the field"));
+let income: incomes = {
+  income: "Software engineer",
+  job: "marketer",
+  sidehustle: "killing",
+};
