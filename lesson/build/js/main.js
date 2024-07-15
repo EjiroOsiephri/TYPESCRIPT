@@ -1,33 +1,15 @@
 "use strict";
-let obj;
-obj = [];
-const add = (a, b) => {
-    return a + b;
-};
-const logMsg = (message) => {
-    console.log(message);
-};
-logMsg("Hello");
-logMsg(add(3, 7));
-let multiply = function (c, d) {
-    return c * d;
-};
-//optional parameters
-const addAll = (a, b, c) => {
-    if (typeof c !== "undefined") {
-        return a + b + c;
+//type assertions
+let a = "Hello";
+let b = a;
+// it gives b the type of two and also the value of a, it would have given b the type of a but a as a less specific type
+let c = a;
+let d = "hello";
+let e = 2;
+const addFunction = (a, b, c) => {
+    if (c === "add") {
+        return a + b;
     }
-    return a + b;
+    return "" + a + b;
 };
-const sumAll = (a = 10, b, c = 2) => {
-    return a + b + c;
-};
-console.log(sumAll(undefined, 20));
-console.log(addAll(1, 20));
-const total = (...nums) => {
-    return nums.reduce((prev, curr) => prev + curr);
-};
-logMsg(total(4, 5, 6, 9, 19, 12));
-const createError = (message) => {
-    throw new Error(message);
-};
+let getValue = addFunction(2, 3, "concat");
