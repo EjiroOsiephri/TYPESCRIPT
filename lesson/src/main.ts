@@ -1,29 +1,20 @@
-interface TransactionObj {
-  [index: string]: number;
+//Generic types
+
+const echo = <T>(arg: T): { arg: T; is: boolean } => {
+  return { arg, is: !!arg };
+};
+
+console.log(echo(2));
+
+interface HasId {
+  id: number;
+  username: string;
 }
 
-let trasactionFunction = (transactions: TransactionObj) => {
-  let total = 0;
-  for (const transaction in transactions) {
-    console.log(transaction);
-
-    total += transactions[transaction];
-  }
-  return total;
+const userFunction = <T extends HasId>(user: T): T => {
+  return user;
 };
 
 console.log(
-  trasactionFunction({
-    name: 23,
-    age: 67,
-  })
+  userFunction({ id: 1, username: "Ejiro", name: "Mixke", description: "dd" })
 );
-type streams = "job" | "income" | "sidehustle";
-
-type incomes = Record<streams, number | string>;
-
-let income: incomes = {
-  income: "Software engineer",
-  job: "marketer",
-  sidehustle: "killing",
-};
